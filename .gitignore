@@ -1,0 +1,36 @@
+# Python and Django specific
+*.pyc
+__pycache__/
+db.sqlite3
+*.sqlite3
+*.log
+*.pot
+*.py[cod]
+*.so
+*.swp
+
+# Ignore virtual environment and dependencies
+venv/
+env/
+*.env  # Include your environment files that contain sensitive keys like .env
+
+# Django secret keys and sensitive settings
+secret_key.txt
+.env
+.env.local
+.env.production
+
+# Ignore IDE and OS generated files
+.vscode/
+.idea/
+.DS_Store
+*.bak
+*.backup
+Thumbs.db
+
+# Static files (can be generated again)
+staticfiles/
+media/
+
+# Ignore the migrations folder as it is often generated per environment
+*/migrations/
