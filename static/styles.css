@@ -1,0 +1,322 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Navigation styles */
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a,
+.logout-button {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    background: none; /* Remove button background */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Change cursor to pointer */
+    padding: 0; /* Remove default button padding */
+    font: inherit; /* Inherit the font from parent to match other links */
+}
+
+nav ul li a:hover,
+.logout-button:hover {
+    text-decoration: underline;
+}
+
+/* Form styles */
+.shortener-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-url {
+    padding: 0.8rem;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.btn-shorten {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-shorten:hover {
+    background-color: #45a049;
+}
+
+/* Result box after the URL is shortened */
+.result-box {
+    margin-top: 2rem;
+    background-color: #f9fafb;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.result-box p {
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.short-url-box {
+    background-color: #e8f5e9;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.short-url {
+    font-size: 1.1rem;
+    color: #2196f3;
+    text-decoration: none;
+}
+
+.short-url:hover {
+    text-decoration: underline;
+}
+
+.instruction {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Copy button */
+.btn-copy {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-copy:hover {
+    background-color: #45a049;
+}
+
+/* Message box */
+.message-box {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message {
+    margin: 0;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Background animation */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #e3f2fd, #f1f8e9, #ffe0b2, #ffccbc);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* List of links for user_links page */
+.link-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.link-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9fafb;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.link-list li a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    max-width: 60%;
+}
+
+.link-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Delete buttons for individual links */
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Delete All button styling */
+.btn-delete-all {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-delete-all:hover {
+    background-color: #c82333;
+}
+
+/* Signup Form Container */
+.signup-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Signup Title Styling */
+.signup-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+}
+
+/* Signup Form Fields */
+.signup-form input[type="text"], .signup-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.signup-form input[type="text"]:focus, .signup-form input[type="password"]:focus {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+    outline: none;
+}
+
+/* Signup Button Styling */
+.signup-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #218838;
+}
+
+/* Password Requirements and Error Messages */
+.signup-form ul.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+    color: #d9534f;
+    font-size: 0.9rem;
+}
+
+.signup-form ul.errorlist li {
+    margin-bottom: 5px;
+}
+
+/* Message Box */
+.message-box {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+}

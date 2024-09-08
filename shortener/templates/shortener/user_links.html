@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shortened Links</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="background">
+        <!-- Cool animated background -->
+    </div>
+    <div class="container">
+        <h1>Your Shortened Links</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <button type="submit" name="delete_all" class="btn-delete-all">Delete All Links</button>
+        </form>
+
+        <ul class="link-list">
+            {% for link in user_links %}
+                <li class="link-item">
+                    <div class="link-info">
+                        <!-- Use the full_url generated in the view -->
+                        <a href="{{ link.full_url }}" target="_blank">{{ link.full_url }}</a>
+                        <span class="original-url">({{ link.original_url }})</span>
+                    </div>
+                    <form method="POST" action="" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="link_id" value="{{ link.id }}">
+                        <button type="submit" name="delete_link" class="btn-delete">Delete</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li>No shortened links found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

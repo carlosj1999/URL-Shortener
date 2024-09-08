@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="background">
+        <!-- Cool animated background -->
+    </div>
+    <div class="container">
+        
+        <!-- Navigation for login/logout/signup -->
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_links' %}">Your Shortened Links</a></li>
+                    <li>
+                        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+
+        <!-- Shortener form -->
+        <h1>URL Shortener</h1>
+        <p>Shorten your URLs quickly and easily.</p>
+
+        <!-- URL Form -->
+        <form method="POST" class="shortener-form">
+            {% csrf_token %}
+            <input type="url" name="url" placeholder="Enter URL to shorten" class="input-url" required>
+            <button type="submit" class="btn-shorten">Shorten</button>
+        </form>
+
+        <!-- Display Shortened URL after it is generated -->
+        {% if shortened_url %}
+            <div class="result-box">
+                <p>Your shortened URL is ready:</p>
+                <div class="short-url-box">
+                    <!-- Anchor tag for shortened URL -->
+                    <a href="{{ shortened_url }}" target="_blank" class="short-url">{{ shortened_url }}</a>
+
+                    <!-- Copy button -->
+                    <button class="btn-copy" onclick="copyToClipboard()">Copy</button>
+                </div>
+                <p class="instruction">Click the link to open, or click 'Copy' to copy the link.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if messages %}
+    <div class="message-box">
+        {% for message in messages %}
+            <p class="message {{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <!-- JavaScript to handle copy functionality -->
+    <script>
+        function copyToClipboard() {
+            const urlField = document.createElement('input');  // Create a hidden input field
+            urlField.value = "{{ shortened_url }}";  // Set the input field value to the shortened URL
+            document.body.appendChild(urlField);  // Append input field to the body
+            urlField.select();  // Select the input field
+            document.execCommand('copy');  // Copy the value to clipboard
+            document.body.removeChild(urlField);  // Remove the input field after copying
+            alert('Shortened URL copied to clipboard!');  // Optional: show an alert or feedback
+        }
+    </script>
+</body>
+</html>
